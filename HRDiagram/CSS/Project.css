@@ -1,0 +1,52 @@
+/**
+  *Custom CSS for Project
+  *Created By Jason Rodriguez
+  **/
+
+button:focus {
+    outline: 0;
+}
+
+#largeMass:active, #smallMass:active {
+    top: 449px;
+}
+
+#mainDiv {
+    height: 480px;
+    width: 720px;
+    background-image: URL("../Media/Images/frames/1.png");
+}
+
+#smallMass,
+#largeMass,
+#next {
+    z-index: 1;
+    position: absolute;
+    width: 149px;
+    height: 22px;
+    background-color: #375077;
+    border: 0;
+    color: white;
+}
+
+#smallMass:hover,
+#largeMass:hover,
+#next:hover {
+    background-color: #cccccc;
+}
+
+#smallMass {
+    left: 556px;
+    top: 448px;
+}
+
+#largeMass {
+    left: 385px;
+    top: 448px;
+}
+
+#next {
+    left: 550px;
+    top: 70px;
+    opacity: 0;
+}

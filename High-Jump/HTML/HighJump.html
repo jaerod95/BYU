@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>High Jump Activity</title>
+	<link rel="stylesheet" href="../CSS/HighJump.CSS">
+	<script src="../Javascript/HighJump.js"></script>
+
+
+</head>
+
+<body>
+	<div id="yellowDot"></div>
+	<div id="instructBox"><p>This lab demonstrates how by taking measurements on
+	different parts of the body, you can calculate an approximate center of mass.
+		Click on each button selector for each body part. 
+	Then click on the picture
+	where the proximal point of the body part is and then click on the Distal part 
+	of the body part. After assigning a value to all the body parts, click on 
+	Calculate Center of Mass to display the center of mass.</p></div>
+
+
+	<div id="mainDDD" class="mainDiv">
+		<div class="jumperDiv">
+			<div class="imgbox">
+				<img id="jumper" src="../Media/Images/jumpers.png" />
+			</div>
+		</div>
+		<div id="MainTableDiv">
+			<!--Proximal and Distal-->
+			<div class="tableDiv">
+				<button id="invisible"></button>
+				<div id="title"><span>Distal</span></div>
+				<div id="subtitle"><span>Proximal</span></div>
+			</div>
+
+			<!--X and Y-->
+			<div class="tableDiv">
+				<button id="invisible"></button>
+				<div id="y2">Y</div>
+				<div id="x2">X</div>
+				<div id="y1">Y</div>
+				<div id="x1">X</div>
+			</div>
+
+			<!--Left Foot-->
+			<div class="tableDiv">
+				<button id="l-foot">Left Foot</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Right Foot-->
+			<div class="tableDiv">
+				<button id="right-foot">Right Foot</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Left Shank-->
+			<div class="tableDiv">
+				<button id="l-shank">Left Shank</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Right Shank-->
+			<div class="tableDiv">
+				<button id="r-shank">Right Shank</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Left Thigh-->
+			<div class="tableDiv">
+				<button id="l-thigh">Left Thigh</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Right Thigh-->
+			<div class="tableDiv">
+				<button id="r-thigh">Right Thigh</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Left Upper arm-->
+			<div class="tableDiv">
+				<button>Left Upper arm</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Right Upper Arm-->
+			<div class="tableDiv">
+				<button>Right Upper Arm</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Left Forearm-->
+			<div class="tableDiv">
+				<button>Left Forearm</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Right Forearm-->
+			<div class="tableDiv">
+				<button>Right Forearm</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Left Hand-->
+			<div class="tableDiv">
+				<button>Left Hand</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Right Hand-->
+			<div class="tableDiv">
+				<button>Right Hand</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Head & Neck-->
+			<div class="tableDiv">
+				<button>Head & Neck</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+
+			<!--Trunk-->
+			<div class="tableDiv">
+				<button>Trunk</button>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="white">0.00</div>
+				<div class="txt0"><span>0.00</span></div>
+				<div class="txt0"><span>0.00</span></div>
+			</div>
+		</div>
+		<div class="calculateDiv">
+			<button id="instructions">Instructions</button>
+			<p class="p1">Horizontal: <span id="hor">0.00m</span></p>
+			<p class="p2">Vertical: <span id="vert">0.00m</span></p>
+			<button id="calcCOM">Calculate Center of Mass</button>
+			<div id="massCalculated1"><span>0.00m</span></div>
+			<div id="massCalculated2"><span>0.00m</span></div>
+		</div>
+	</div>
+</body>
+
+</html>
