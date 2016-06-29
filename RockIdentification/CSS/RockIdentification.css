@@ -1,0 +1,62 @@
+/**
+  *Custom CSS for Project
+  *Created By Jason Rodriguez
+  **/
+
+div {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+body {
+    background-image: url("../Media/Images/72.png");
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 365px;
+    height: 300px;
+}
+
+button {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50px;
+    left: 500px;
+    background-image: url("../Media/Images/73.png");
+    background-color: transparent;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+    border-radius: 25px;
+    border: 1px solid #657620;
+    background: #669966;
+    background-image: url("../Media/Images/73.png"); 
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#669966), to(#93ad93));
+    background-image: -webkit-linear-gradient(#669966, #93ad93);
+    background-image: -moz-linear-gradient(#669966, #93ad93);
+    background-image: -o-linear-gradient(#669966, #93ad93);
+    background-image: linear-gradient(#669966, #93ad93);
+    background-color: transparent;
+}
+
+.one {
+}
+
+.mainDiv {
+    width: 365px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
