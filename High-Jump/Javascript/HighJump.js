@@ -16,6 +16,7 @@ function init() {
     document.getElementById("jumper").addEventListener("click", upHV);
     document.getElementById("calcCOM").addEventListener("click", COM);
     document.getElementById("MainTableDiv").addEventListener("click", select);
+    document.getElementById("close").addEventListener("click", instruct);
     document.getElementById("instructions").addEventListener("click", instruct);
 
     var buttons = document.getElementsByTagName("button");
@@ -30,7 +31,6 @@ function init() {
 function instruct(elem) {
     var iBox = document.getElementById("instructBox");
     if(!IBShow) {
-        elem.target.innerHTML = "(close)";
         iBox.style.width = "30vw";
         iBox.style.height = "30vh";
         iBox.style.left = "35vw";
@@ -39,24 +39,29 @@ function instruct(elem) {
         iBox.style.transition = "all 1s";
         iBox.style.WebkitTransition = "all 1s";
         iBox.style.opacity = 1;
+        document.getElementById("inText").innerHTML = 'Click on the button for the segment you would like to digitize. Then, click on the proximal end of the segment followed by the distal. Continue this process for each segment. Once you are finished, click "Calculate Center of Mass" to display and be provided with the coordinate of the center of mass.';
         setTimeout(function () {
             iBox.children[0].style.fontSize = "1em";
             iBox.children[0].style.opacity = 1;
+            iBox.children[1].style.fontSize = "1em";
+            iBox.children[1].style.opacity = 1;
         }, 1000);
         
         IBShow = true;
 
         
     } else {
-        elem.target.innerHTML = "Instructions";
         iBox.children[0].style.opacity = 0;
         iBox.children[0].style.fontSize = 0;
+        iBox.children[1].style.opacity = 0;
+        iBox.children[1].style.fontSize = 0;
         iBox.style.width = 0;
         iBox.style.height = 0;
         iBox.style.left = 0;
         iBox.style.top = 0;
         iBox.style.opacity = 0;
         IBShow = false;
+        document.getElementById("inText").innerHTML = "0px";
     }
 }
 

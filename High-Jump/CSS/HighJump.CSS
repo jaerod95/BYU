@@ -15,6 +15,34 @@ body {
     background-image: URL("../Media/Images/fab.png");
 }
 
+#close {
+    position: absolute;
+    opacity: 0;
+    font-size: 0;
+    left: 90%;
+    top: 5%;
+    width: 30px;
+    height: 30px;
+
+}
+
+#close:active {
+    top: 6%;
+}
+
+.exit {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 90%;
+    top: 5%;
+}
+
+#inText {
+    position: absolute; 
+}
+
+
 .p1,
 .p2 {
     font-size: 4vmin;
@@ -71,9 +99,12 @@ div span {
 }
 
 #instructBox p {
-    padding: 1em 1em;
+    padding: 0 1em;
+    margin-right: 10%;
     opacity: 0;
     text-align: justify;
+    position: absolute;
+    
 
 }
 
@@ -171,6 +202,7 @@ div span {
     margin-left: -8vw;
     margin-top: 3.5vh;
     position: absolute;
+    font-size: 1.5em;
 }
 
 /************************
@@ -222,6 +254,7 @@ div span {
     margin-top: -14.5vh;
     position: relative;
     display: block;
+    font-size: 1.5em;
 }
 
 #jumper {
