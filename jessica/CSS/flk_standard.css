@@ -1,0 +1,249 @@
+html, body
+{ 
+margin: auto;
+background-color: #FFF;
+background-image:url(images/flk_background.jpg);
+background-repeat:no-repeat;
+background-attachment:fixed;
+text-align: center;
+font-size: 100%;
+}
+
+a.amazonlink:link {color: #C30; text-decoration:none;}    /* unvisited link */
+a.amazonlink:visited {color:#963; text-decoration:none;} /* visited link */
+a.amazonlink:hover {color: #F60; text-decoration:none;}   /* mouse over link */
+a.amazonlink:active {color: #FFF; text-decoration:none;}  /* selected link */
+
+/**Menu items start here */	
+#menu
+{
+	position: absolute;
+	top: 300px;
+	left: 0px;
+	width: 200px;
+	padding: 10px 10px 10px 0px;
+}
+
+ul.menu
+{
+	font-size: 1.4em;
+	font-family: "Century Gothic", Arial, sans-serif;
+	list-style-type: none;
+	color: #963;
+	text-decoration: none;
+}
+
+ul.submenu
+{
+	font-size: .8em;
+	font-family: "Century Gothic", Arial, sans-serif;
+	list-style-type: disc;
+	color: #963;
+	text-decoration: none;
+}
+
+a.menu:link {color:#963; text-decoration:none;}    /* unvisited link */
+a.menu:visited {color:#963; text-decoration:none;} /* visited link */
+a.menu:hover {color: #FF9; text-decoration:none;}   /* mouse over link */
+a.menu:active {color: #FFF; text-decoration:none;}  /* selected link */
+
+a.submenu:link {color:#963; text-decoration:none;}    /* unvisited link */
+a.submenu:visited {color:#963; text-decoration:none;} /* visited link */
+a.submenu:hover {color: #FF9; text-decoration:none;}   /* mouse over link */
+a.submenu:active {color: #FFF; text-decoration:none;}  /* selected link */
+
+/**Menu items end here */
+
+#container1
+{
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+	text-align: left;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#headerbuffer
+{
+	height: 60px;
+	padding: 0px;
+	marign: 0px;
+
+}
+
+#header
+{
+	color: #FFF;
+	height: 200px;
+		margin-left: 220px;
+		background-image: url(images/FLK_title.png);
+	background-repeat:no-repeat;
+
+}
+
+#logospace
+{
+	float: left;
+	width: 220px;
+	height: 220px;
+	background-image: url(images/flk_logo.png);
+	background-repeat: no-repeat;
+	
+}
+
+
+#footer
+{
+	Clear: both;
+	text-align: center;
+	font-family: "Verdana", Geneva, sans-serif;
+	font-size: .625em;
+	color: #000;
+	height: 20px;
+	padding: 5px 5px 5px 5px;
+}
+	
+#articlepagetop
+{
+	height: 36px;
+	margin-left: 220px;
+	color: #666;
+	background-image:url(images/images/article_background_working_01.png);
+}
+
+#articlepagebottom
+{
+	height: 36px;
+	margin-left: 220px;
+	color: #666;
+	background-image:url(images/images/article_background_working_03.png);
+}
+
+#articlespace
+{
+	margin-left: 220px;
+	padding: 0px 20px 20px 20px;
+	background-image:url(images/images/article_background_working_02.png);
+}
+
+#article
+{
+	background-image: url(images/watermark.png);
+	background-repeat: no-repeat;
+	background-position: center center;	
+}
+
+
+p.blurb
+{
+	font-size: 1 em;
+	font-family: "Verdana"; Geneva; sans-serif;
+	color: #000;
+	margin: 20px 40px 20px 40px;
+
+}
+
+p.blurbsmall
+{
+	font-size: .75em;
+	font-family: "Verdana"; Geneva; sans-serif;
+	color: #000;
+	margin: 20px 40px 20px 40px;
+
+}
+
+.subtitle
+{
+	font-size: 1 em;
+	color: #960;
+	margin: 5px 10px 20px 40px;
+}
+
+
+ 
+div.subheading
+{
+	text-shadow: 2px 2px 2px  #B79F88;
+	font-size: 24px;
+	font-family: "Century Gothic", Arial, sans-serif;
+	color: #960;
+	padding: 4px 4px 4px 4px;
+	
+}
+
+
+img.bookcover
+{
+	float: left;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom:20px;
+	min-width: 25%;
+}
+
+
+
+ /* the table code needs to be refined */
+ .tabletitle
+{
+	font-size: 28px;
+	color: #FF9;
+	margin: 5px 10px 20px 40px;
+}
+
+#tablespace
+{
+	height: 36px;
+	margin-left: 220px;
+	color: #666;
+}
+
+.tableblurb
+{
+	font-size: .5 em;
+	font-family: "Verdana"; Geneva; sans-serif;
+	color: #960;
+	margin: 10px 20px 10px 20px;
+	}
+
+table 
+{
+	position: relative;
+	width: 960px;
+	padding: 20px;
+	margin: 0 auto;
+}
+td {
+width: 270px;
+text-align: center;
+margin: 10px auto;
+padding: 10px;
+border: solid 1px navy;
+}
+td img {
+margin-bottom: 15px;
+}
+th {
+padding: 30px 20px 10px 20px;
+}
+
+td {
+	width: 270px;
+	text-align: center;
+	margin: 10px auto;
+	padding: 10px;
+	border: none;
+}
+td img
+ {
+	float: left;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	min-width: 25%;
+}
+
+th 
+{
+padding: 30px 20px 10px 20px;
+}

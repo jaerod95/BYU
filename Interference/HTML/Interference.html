@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interference</title>
+    <link rel="stylesheet" href="../CSS/Interference.css" type="text/css" />
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+    <script type="text/javascript" src="../Javascript/Interference.js"></script>
+    <script>
+    function init() {
+	var stage1 = new createjs.Stage("white1");
+	
+	for (var i = 0; i < 54; i++) {
+	var circle = new createjs.Shape();
+	circle.graphics.beginStroke("black").beginRadialGradientFill(["#FFF", "#000"], [0,1], -10, 0, 45, 0, 0, 55).drawCircle(0, 0, 50);
+	circle.x = 50;
+	circle.y = 41;
+	stage1.addChild(circle);
+	}
+    </script>
+    
+    
+</head>
+
+<body onload="init();">
+    <div class="grayfilter idiv">
+        <div class="imainDiv idiv" id="imainDiv">
+            <button class="initialstart ibutton"><p class="ip">START</p></button>
+            <div class="istartstop idiv"></div>
+            <div class="islider is2 idiv"></div>
+            <div class="islider is1 idiv"></div>
+            <canvas id="white1"></canvas>
+            <canvas id="white2"></canvas>
+            <canvas id="black"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+.imainDiv {
+    background-image: url("../Media/Images/background.png");
+    width: 500px;
+    height: 380px;
+}
+
+.grayfilter {
+    width: 500px;
+    height: 380px;
+    background-color: black;
+}
+
+.idiv,
+.ibutton {
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.initialstart:active {
+    top: 291px;
+    border: 2px solid white;
+}
+
+.initialstart {
+    left: 355px;
+    top: 290px;
+    width: 55px;
+    height: 20px;
+    background: none;
+    border: 2px solid black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.istartstop {}
+
+.islider {}
+
+.is2 {}
+
+.is1 {}
+
+.ip {
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    text-align: center;
+}
+
+#white1,
+#white2,
+#black {
+    position: absolute;
+    width: 275px;
+    height: 82px;
+    left: 135px;
+    opacity: .5;
+}
+
+#white1 {
+    top: 28px;
+    background-color: blue;
+}
+
+#white2 {
+    background-color: yellow;
+    top: 110px;
+}
+
+#black {
+    background-color: red;
+    top: 257px;
+}
