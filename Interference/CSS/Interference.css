@@ -1,14 +1,15 @@
+@charset "utf-8";
 .imainDiv {
     background-image: url("../Media/Images/background.png");
     width: 500px;
     height: 380px;
 }
 
-.grayfilter {
+/*.grayfilter {
     width: 500px;
     height: 380px;
     background-color: black;
-}
+}*/
 
 .idiv,
 .ibutton {
@@ -22,29 +23,41 @@ button:focus {
 }
 
 .initialstart:active {
-    top: 291px;
+    top: 81px;
     border: 2px solid white;
 }
 
 .initialstart {
-    left: 355px;
-    top: 290px;
+    left: 420px;	
+    top: 80px;
     width: 55px;
     height: 20px;
     background: none;
     border: 2px solid black;
     font-weight: bold;
     display: flex;
-    justify-content: center;
+	font-size: 9px;
 }
 
 .istartstop {}
 
-.islider {}
+.islider {
 
-.is2 {}
+	width: 20px;
+	height: 11px;
+	background-image: URL("../Media/Images/Slider.png");
+	border-radius: 3px;
+	}
 
-.is1 {}
+.is2 {
+		left: 265px;
+	top: 208px;
+	}
+
+.is1 {
+	left: 265px;
+	top: 230px;
+	}
 
 .ip {
     padding: 0;
@@ -66,15 +79,26 @@ button:focus {
 
 #white1 {
     top: 28px;
-    background-color: blue;
 }
 
 #white2 {
-    background-color: yellow;
     top: 110px;
 }
 
 #black {
-    background-color: red;
     top: 257px;
 }
+
+#w1 {
+	left: 440px;
+	top: 205px;
+	font-weight:bold;
+}
+
+#w2 {
+	left: 440px;
+	top: 225px;
+	font-weight: bold;
+}
+
+

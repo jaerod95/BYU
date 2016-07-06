@@ -4,38 +4,189 @@
 <head>
     <meta charset="UTF-8">
     <title>Interference</title>
-    <link rel="stylesheet" href="../CSS/Interference.css" type="text/css" />
+    <link rel="stylesheet" href="../CSS/Interference.css" />
     <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
-    <script type="text/javascript" src="../Javascript/Interference.js"></script>
-    <script>
-    function init() {
-	var stage1 = new createjs.Stage("white1");
-	
-	for (var i = 0; i < 54; i++) {
-	var circle = new createjs.Shape();
-	circle.graphics.beginStroke("black").beginRadialGradientFill(["#FFF", "#000"], [0,1], -10, 0, 45, 0, 0, 55).drawCircle(0, 0, 50);
-	circle.x = 50;
-	circle.y = 41;
-	stage1.addChild(circle);
-	}
-    </script>
-    
-    
 </head>
 
-<body onload="init();">
-    <div class="grayfilter idiv">
-        <div class="imainDiv idiv" id="imainDiv">
-            <button class="initialstart ibutton"><p class="ip">START</p></button>
-            <div class="istartstop idiv"></div>
-            <div class="islider is2 idiv"></div>
-            <div class="islider is1 idiv"></div>
-            <canvas id="white1"></canvas>
-            <canvas id="white2"></canvas>
-            <canvas id="black"></canvas>
-        </div>
+<body>
+    <div class="imainDiv idiv" id="imainDiv">
+        <div class="idiv" id="w1">0</div>
+        <div class="idiv" id="w2">0</div>
+        <button class="initialstart ibutton" id="ints"><p class="ip" id="ip">START ></p></button>
+        <div class="istartstop idiv"></div>
+        <button class="islider is2 idiv" id="s1"></button>
+        <button class="islider is1 idiv" id="s2"></button>
+        <canvas id="white1"></canvas>
+        <canvas id="white2"></canvas>
+        <canvas id="black"></canvas>
     </div>
+    <script>
+        var test = "This ran";
+
+        var stage1 = new createjs.Stage("white1");
+        var stage2 = new createjs.Stage("white2");
+        var stage3 = new createjs.Stage("black");
+        var wCirc1 = [];
+        var wCirc2 = [];
+        var wCirc3 = [];
+        var count = 2.5;
+        var start = false;
+        var flow;
+        var mouseX;
+        var sliding = false;
+        var sliding2 = false;
+        var ww1 = 0;
+        var ww2 = 0;
+        var itfact = 0;
+        var itfact2 = 0;
+        var x = (Math.PI/2);
+
+        window.addEventListener("mousemove", getmouse);
+        window.addEventListener("DOMContentLoaded", init());
+        document.getElementById("ints").addEventListener("click", oscilate);
+        window.addEventListener("mousedown", slide);
+        window.addEventListener("mouseup", noslide);
+
+        //////////////////////////////////////////////////////////////////////////////////////        ///////////////////////////////////////////////////////////////////////////////////////
+        function getmouse() {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+            if (sliding && mouseX > 130 && mouseX < 410) {
+                document.getElementById("s1").style.left = (mouseX - 10) + "px";
+
+
+
+                if (mouseX < 135) {
+                    ww1 = 0;
+					itfact = 0;
+                }
+                else if (mouseX > 405) {
+                    ww1 = 360;
+					itfact = Math.PI;
+                }
+                else {
+                    ww1 = -170 + mouseX * 1.3;
+					itfact = ((ww1/2) * (Math.PI/180));
+                    ww1 = ww1.toFixed(2);
+                }
+                document.getElementById("w1").innerHTML = ww1;
+            }
+
+            if (sliding2 && mouseX > 130 && mouseX < 410) {
+                document.getElementById("s2").style.left = (mouseX - 10) + "px";
+                if (mouseX < 135) {
+                    ww2 = 0;
+					itfact2 = 0;
+                }
+                else if (mouseX > 405) {
+                    ww2 = 360;
+					itfact2 = Math.PI;
+                }
+                else {
+                    ww2 = -170 + mouseX * 1.3;
+					itfact2 = ((ww2/2) * (Math.PI/180));
+                    ww2 = ww2.toFixed(2);
+                }
+                document.getElementById("w2").innerHTML = ww2;
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////
+
+        function slide(event) {
+            if (event.target.id == "s1") {
+                sliding = true;
+            }
+            else if (event.target.id == "s2") {
+                sliding2 = true;
+            }
+        }
+        
+        ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////
+        
+        function noslide(event) {
+            sliding = false;
+            sliding2 = false;
+			        wCirc1[53].y = 75;
+                    wCirc2[53].y = 75;
+                    wCirc3[53].y = 75;
+                
+                stage1.update();
+                stage2.update();
+                stage3.update();
+        }
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////		///////////////////////////////////////////////////////////////////////////////////////
+
+        function createDot(arr, stage) {
+            for (var i = 0; i < 54; i++) {
+                arr[i] = new createjs.Shape();
+                arr[i].graphics.beginStroke("black").beginFill("white").drawEllipse(0, 0, 4, 7);
+                arr[i].x = count;
+                arr[i].y = 75;
+                stage.addChild(arr[i]);
+                count += 6;
+                stage.update();
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////
+
+        function oscilate() {
+            if (start) {
+                clearInterval(flow);
+                start = false;
+                for (var i = 0; i < 54; i++) {
+                    wCirc1[i].y = 75;
+                    wCirc2[i].y = 75;
+                    wCirc3[i].y = 75;
+                }
+                stage1.update();
+                stage2.update();
+                stage3.update();
+                document.getElementById("ip").innerHTML = "START >";
+            }
+            else {
+                flow = setInterval(osc, 10);
+                start = true;
+                document.getElementById("ip").innerHTML = "STOP >";
+            }
+
+            function osc() {
+                wCirc1[53].y += (Math.sin(x + itfact) * 5);
+				wCirc2[53].y += (Math.sin(x + itfact2) * 5);
+				wCirc3[53].y = (wCirc1[53].y - wCirc2[53].y);
+				console.log(wCirc3[53].y);
+                x += Math.PI / 16;
+                for (var i = 0; i < 53; i++) {
+                    wCirc1[i].y = wCirc1[i + 1].y;
+                    wCirc2[i].y = wCirc2[i + 1].y;
+                    wCirc3[i].y = wCirc3[i + 1].y;
+                    stage1.update();
+					stage2.update();
+               		stage3.update();
+                }
+            }
+        }
+        
+        ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////
+
+        function init() {
+            createDot(wCirc1, stage1);
+            count = 2.5;
+            createDot(wCirc2, stage2);
+            count = 2.5;
+            createDot(wCirc3, stage3);
+        }
+    </script>
 </body>
 
 </html>
