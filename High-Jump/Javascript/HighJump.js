@@ -30,7 +30,7 @@ function init() {
 
 function instruct(elem) {
     var iBox = document.getElementById("instructBox");
-    if(!IBShow) {
+    if (!IBShow) {
         iBox.style.width = "30vw";
         iBox.style.height = "30vh";
         iBox.style.left = "35vw";
@@ -40,17 +40,18 @@ function instruct(elem) {
         iBox.style.WebkitTransition = "all 1s";
         iBox.style.opacity = 1;
         document.getElementById("inText").innerHTML = 'Click on the button for the segment you would like to digitize. Then, click on the proximal end of the segment followed by the distal. Continue this process for each segment. Once you are finished, click "Calculate Center of Mass" to display and be provided with the coordinate of the center of mass.';
-        setTimeout(function () {
+        setTimeout(function() {
             iBox.children[0].style.fontSize = "1em";
             iBox.children[0].style.opacity = 1;
             iBox.children[1].style.fontSize = "1em";
             iBox.children[1].style.opacity = 1;
         }, 1000);
-        
+
         IBShow = true;
 
-        
-    } else {
+
+    }
+    else {
         iBox.children[0].style.opacity = 0;
         iBox.children[0].style.fontSize = 0;
         iBox.children[1].style.opacity = 0;
@@ -88,9 +89,6 @@ function upHV(events) {
     var RealY = rect.bottom - events.clientY;
     var yMeters = RealY * MoveY;
     yMeters = parseFloat(Math.round(yMeters * 100) / 100).toFixed(2);
-
-    document.getElementById("hor").innerHTML = xMeters;
-    document.getElementById("vert").innerHTML = yMeters;
 }
 
 //This function is called when a click is registered on the image
@@ -187,7 +185,7 @@ function select(event1) {
                 opacity += .1;
                 ct--;
                 setTimeout(function() {
-                    MyFadeFunction()
+                    MyFadeFunction();
                 }, 50);
                 elem1op.style.opacity = opacity;
                 elem2op.style.opacity = opacity;
@@ -196,7 +194,7 @@ function select(event1) {
                 opacity -= .1;
                 ct2++;
                 setTimeout(function() {
-                    MyFadeFunction()
+                    MyFadeFunction();
                 }, 50);
                 elem1op.style.opacity = opacity;
                 elem2op.style.opacity = opacity;
@@ -206,7 +204,7 @@ function select(event1) {
                 ct = 10;
                 ct2 = 0;
                 setTimeout(function() {
-                    MyFadeFunction()
+                    MyFadeFunction();
                 }, 50);
                 elem1op.style.opacity = opacity;
                 elem2op.style.opacity = opacity;
@@ -228,7 +226,7 @@ function select(event1) {
                 opacity += .1;
                 ct--;
                 setTimeout(function() {
-                    MyFadeFunction2()
+                    MyFadeFunction2();
                 }, 50);
                 elem3op.style.opacity = opacity;
                 elem4op.style.opacity = opacity;
@@ -237,7 +235,7 @@ function select(event1) {
                 opacity -= .1;
                 ct2++;
                 setTimeout(function() {
-                    MyFadeFunction2()
+                    MyFadeFunction2();
                 }, 50);
                 elem3op.style.opacity = opacity;
                 elem4op.style.opacity = opacity;
@@ -247,7 +245,7 @@ function select(event1) {
                 ct = 10;
                 ct2 = 0;
                 setTimeout(function() {
-                    MyFadeFunction2()
+                    MyFadeFunction2();
                 }, 50);
                 elem3op.style.opacity = opacity;
                 elem4op.style.opacity = opacity;

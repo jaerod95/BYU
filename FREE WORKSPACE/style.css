@@ -1,0 +1,75 @@
+.JR_Topbannersectioncpse {
+    vertical-align: top;
+    background: #a2d2f9;
+    border-radius: 5px;
+    box-shadow: 3px 0 5px #AFAFAF;
+    font-family: Gill Sans, sans-serif;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+.JR_cpseHeader {
+    width: 800px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.JR_cpseHeaderBox1 {
+    width: 390px;
+    height: 150px;
+    float: left;
+    background: #a2d2f9;
+    border-radius: 5px;
+    box-shadow: 3px 0 5px #AFAFAF;
+    font-family: Gill Sans, sans-serif;
+    position: relative;
+}
+
+.JR_cpseHeaderBox2 {
+    width: 390px;
+    height: 150px;
+    float: right;
+    background: #a2d2f9;
+    border-radius: 5px;
+    box-shadow: 3px 0 5px #AFAFAF;
+    font-family: Gill Sans, sans-serif;
+    position: relative;
+}
+
+.JR_questionmark {
+    width: 62px;
+    margin-top: 44px;
+    padding-left: 10px;
+    float: left;
+}
+
+.JR_StudyIcon {
+    margin-top: 41px;
+    float: left;
+}
+
+.JR_cpseHeaderBoxText {
+    position: absolute;
+    margin-left: 72px;
+    height: 150px;
+    width: 298px;
+    padding: 0 10px;
+    top: 0;
+}
+
+.JR_cpseHeaderBoxHeader {
+    vertical-align: top;
+    border-radius: 5px;
+    box-shadow: 3px 0 5px #AFAFAF;
+    font-family: Gill Sans, sans-serif;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.JR_cpseCourseQuestion {
+    text-align: center;
+    font-weight: bold;
+}
