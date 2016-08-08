@@ -1,0 +1,145 @@
+/**
+  *Custom CSS for Project
+  *Created By Jason Rodriguez
+  **/
+
+.img {
+    border: none;
+}
+
+.div p {
+    font-size: .74em;
+}
+
+.div {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.mainDiv {
+    background-image: url("../Media/Images/RockIdentification/72.png");
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 365px;
+    height: 400px;
+}
+
+.button {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-image: url("../Media/Images/RockIdentification/73.png");
+    background-color: transparent;
+    border: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    border-radius: 25px;
+    border: 1px solid #657620;
+    background: #669966;
+    background-image: url("../Media/Images/RockIdentification/73.png");
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#669966), to(#93ad93));
+    background-image: -webkit-linear-gradient(#669966, #93ad93);
+    background-image: -moz-linear-gradient(#669966, #93ad93);
+    background-image: -o-linear-gradient(#669966, #93ad93);
+    background-image: linear-gradient(#669966, #93ad93);
+    background-color: transparent;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.one {
+    left: 238px;
+    top: 45px;
+}
+
+.one:active {
+    top: 46px;
+}
+
+.two {
+    left: 150px;
+    top: 84px;
+}
+
+.two:active {
+    top: 85px;
+}
+
+.three {
+    left: 300px;
+    top: 167px;
+}
+
+.three:active {
+    top: 168px;
+}
+
+.four {
+    left: 117px;
+    top:245px;
+}
+
+.four:active {
+    top: 246px;
+}
+
+.five {
+    left: 313px;
+    top: 246px;
+}
+
+.five:active {
+    top: 247px;
+}
+
+.mainDiv {
+    width: 365px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.results {
+    width: 365px;
+    height: 100px;
+    position: absolute;
+    top: 300px;
+}
+
+.text {
+    width: 265px;
+    height: 100%;
+}
+
+#imgbox { 
+    transition: all 1s ease-in-out;
+    transform-origin: 100px, 100px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border: 0;
+    left: 265px;
+    opacity: 0;
+}
+#imgbox:focus {
+    border: 0;
+}
+
+#imgbox:hover {
+    transition: all 1s ease-out;
+    transform: scale(2.6, 2) translate(-20px, -25px);
+    transform-origin: bottom right;
+}
