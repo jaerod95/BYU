@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="jr-lj-html">
+
+<!--          Name:       CPSE-300 - Learning Journey                            -->
+<!--          Author:     Jason Rodriguez                                        -->
+<!--          Course:     CPSE - 300                                             -->
+<!--          Page:       Descibe the Learning Journey and Identify Where the    -->
+<!--                      students are going                                     -->
+<!--  Recreation of the .swf interactive formerly named l1p8continuum.swf        -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Learning Journey</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body class="jr-lj-body">
+  <div id="jr-lj-main" class="jr-lj-main jr-lj-div">
+    <button id="jr-lj-play" class="jr-lj-play btn btn-primary">PLAY</button>
+  </div>
+
+  <!-------------------------------------------->
+  <!--              Stylesheet                -->
+  <!-------------------------------------------->
+
+  <style>
+    /********/
+    /* Base */
+    /********/
+    .jr-lj-body, .jr-lj-div, .jr-lj-html {
+        padding: 0;
+        margin: 0;
+    }
+    .jr-lj-main {
+        width: 530px;
+        height: 454.5px;
+        background-image: url('../Media/Images/ljf/1.png');
+        background-size: contain;
+    }
+    .jr-lj-play {
+        transition: all 1s;
+        height: 50px;
+        width: 100px;
+        position: absolute;
+        left: 215px;
+        top: 202.25px
+    }
+
+  </style>
+
+  <!-------------------------------------------->
+  <!--           Close Stylesheet             -->
+  <!-------------------------------------------->
+
+  <!-------------------------------------------->
+  <!--             JavaScript                 -->
+  <!-------------------------------------------->
+
+<script>
+
+  var jr_lj_int;
+
+  var jr_Learning_Journey = {
+    //An array where the preloaded images will be
+    images: [],
+    date1: null,
+    date2: null,
+    //ran when the play or reset button is clicked
+    init: function(evt) {
+      var that = this;
+      jr_Learning_Journey.date2 = Date.now();
+
+      if (evt.target.innerHTML === 'Loading...') {
+        if ((that.date2 - that.date1) > 15000) {
+          clearInterval(jr_lj_int);
+          jr_Learning_Journey.fadePlay();
+          jr_Learning_Journey.play();
+        }
+      } else if (evt.target.innerHTML === 'PLAY') {
+        if ((that.date2 - that.date1) > 15000) {
+          jr_Learning_Journey.fadePlay();
+          jr_Learning_Journey.play();
+        } else {
+          evt.target.innerHTML = "Loading...";
+          jr_lj_int = setInterval(function() {
+            jr_Learning_Journey.init(evt);
+          }, 500);
+        }
+      } else {
+        evt.target.innerHTML = 'PLAY';
+        document.getElementById('jr-lj-main').style.backgroundImage = "url('../Media/Images/ljf/1.png')";
+      }
+    },
+
+    //image preloader
+    loadImages: function() {
+      for (var i = 1; i < 670; i++) {
+        var newImage = document.createElement('img');
+        newImage.src = '../Media/Images/ljf/' + i + '.png';
+        newImage.preload = true;
+        newImage.style.width = '530px';
+        newImage.style.height = '450px';
+        jr_Learning_Journey.images.push(newImage);
+      }
+    },
+
+    //changes background image to immitate animation
+    play: function() {
+      var counter = 1;
+      var yes = setInterval(function() {
+        if (counter < 669) {
+          document.getElementById('jr-lj-main').style.backgroundImage = "url('" + jr_Learning_Journey.images[counter].src + "')";
+          counter++;
+        } else {
+          jr_Learning_Journey.showReset();
+          jr_Learning_Journey.loaded = true;
+          clearInterval(yes);
+        }
+      }, 50);
+    },
+
+    //fades the play button after clicked
+    fadePlay: function() {
+      document.getElementById('jr-lj-play').style.opacity = 0;
+    },
+    //changes the play button into the reset button
+    showReset: function() {
+      document.getElementById('jr-lj-play').style.opacity = 1;
+      document.getElementById('jr-lj-play').innerHTML = 'RESET';
+    }
+  };
+
+  jr_Learning_Journey.loadImages();
+  window.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('jr-lj-play').addEventListener('click', jr_Learning_Journey.init);
+    jr_Learning_Journey.date1 = Date.now();
+  });
+</script>
+
+</body>
+
+</html>

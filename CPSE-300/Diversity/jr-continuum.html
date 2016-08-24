@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="jr-c-html">
+
+<!--          Name:       CPSE-300 - Continuum                                   -->
+<!--          Author:     Jason Rodriguez                                        -->
+<!--          Course:     CPSE - 300                                             -->
+<!--          Page:       Personal Reactions and Contributions                   -->
+<!--    Recreation of the .swf interactive formerly named l1p8continuum.swf      -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Continuum</title>
+  <link rel="stylesheet" href="../CSS/jr-continuum.css" media="screen" title="no title" charset="utf-8">
+  <script src="../Javascript/jr-continuum.js" charset="utf-8"></script>
+</head>
+
+<body class="jr-c-body">
+  <div class="jr-c-main jr-c-div">
+    <div class="jr-c-diversity jr-c-div">Recognize Diversity</div>
+    <div class="jr-c-diversity jr-c-div">Tolerate Diversity</div>
+    <div class="jr-c-diversity jr-c-div">Accept Diversity</div>
+    <div class="jr-c-diversity jr-c-div">Respect Diversity</div>
+    <div class="jr-c-diversity jr-c-div">Celebrate Diversity</div>
+    <hr class="jr-c-hr" />
+    <p id="jr-c-txt"></p>
+  </div>
+
+
+  <!-------------------------------------------->
+  <!--              Stylesheet                -->
+  <!-------------------------------------------->
+
+  <style>
+    .jr-c-html,
+    .jr-c-div {
+      padding: 0;
+      margin: 0;
+    }
+
+    .jr-c-main {
+      width: 508px;
+    }
+
+    .jr-c-diversity {
+      display: inline-block;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      margin-left: -2px;
+    }
+
+    .jr-c-diversity:nth-child(1) {
+      background-color: #E4DEB7;
+    }
+
+    .jr-c-diversity:nth-child(2) {
+      background-color: #DDD6A6;
+    }
+
+    .jr-c-diversity:nth-child(3) {
+      background-color: #D7CE94;
+    }
+
+    .jr-c-diversity:nth-child(4) {
+      background-color: #D0C582;
+    }
+
+    .jr-c-diversity:nth-child(5) {
+      background-color: #C9BD70;
+    }
+
+    .jr-c-hr {
+      width: 100%;
+    }
+    .jr-c-txt {
+      width: 500px;
+    }
+  </style>
+
+  <!-------------------------------------------->
+  <!--           Close Stylesheet             -->
+  <!-------------------------------------------->
+
+  <!-------------------------------------------->
+  <!--             JavaScript                 -->
+  <!-------------------------------------------->
+
+  <script>
+    window.addEventListener('DOMContentLoaded', jr_init);
+
+    var jr_words = [
+      "An individual notices that he/she differs from others along at least one dimension. For example, a 3-year old child recognizes that he is a 'boy' and that his cousin is a girl.",
+      "Either reluctantly or willingly an individual allows diversity to exist within his/her affiliations.  For example, a group of \"popular kid\" in high school lets one of the \"computer nerds\" sit at their table at lunch",
+      "An individual approves the diversity within his/her affiliations.  For example, members of a championship bowling team welcome a new team member who admits he/she is \"not a good bowler.\"",
+      "An invidual values the diversity within his/her affiliations.  For example, a high school choir teacher selects holiday songs representing the various religious affiliations of the choir members and the school community.",
+      "An individual lauds the diversity within his/her affiliations.  For example, a CEO of a major corporation frequently spends Saturday afternoons with his unemployed neighbor shopping at the local thrift store."
+    ]
+
+    function jr_init() {
+      var divs = document.getElementsByClassName('jr-c-diversity');
+      for (var i = 0; i < divs.length; i++) {
+        divs[i].addEventListener('mouseover', jr_showText);
+        divs[i].addEventListener('mouseleave', jr_hideText);
+      }
+    }
+
+    function jr_showText(evt) {
+      var text = document.getElementById('jr-c-txt');
+      switch (evt.target.innerHTML) {
+        case "Recognize Diversity":
+          text.innerHTML = jr_words[0]
+          break;
+        case "Tolerate Diversity":
+          text.innerHTML = jr_words[1]
+          break;
+        case "Accept Diversity":
+          text.innerHTML = jr_words[2]
+          break;
+        case "Respect Diversity":
+          text.innerHTML = jr_words[3]
+          break;
+        case "Celebrate Diversity":
+          text.innerHTML = jr_words[4]
+          break;
+      }
+    }
+
+    function jr_hideText(evt) {
+      document.getElementById('jr-c-txt').innerHTML = "";
+    }
+  </script>
+
+  <!-------------------------------------------->
+  <!--          Close JavaScript              -->
+  <!-------------------------------------------->
+
+</body>
+
+</html>
