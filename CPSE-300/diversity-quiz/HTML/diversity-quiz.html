@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Diversity Quiz</title>
+</head>
+
+<body>
+  <div class="dq-main">
+    <div class="dq-content">
+      <div class="dq-left">
+        <p>
+          Choose a group that you are not affiliated with (religious, ethnic, social, educational, etc.). Answer the following questions with regard to your perceptions of this group.
+        </p>
+        <p>1- I realize that I differ in at least one way from members of this group.</p>
+        <p>2- I permit members of this group to be a part of my life.</p>
+        <p>3- I am glad that members of this group are a part of my life.</p>
+        <p>4- I try to understand the point of view and life experiences of members of this group.</p>
+        <p>5- I actively encourage myself to become involved with members of this group in many facets of my life.</p>
+      </div>
+      <div class="dq-yes-no" id="dq-yes-no">
+        <p data-check="0" data-id="1" class="dq-yes">yes</p>
+        <p data-check="0" data-id="2" class="dq-no">no</p>
+        <p data-check="0" data-id="3" class="dq-yes">yes</p>
+        <p data-check="0" data-id="4" class="dq-no">no</p>
+        <p data-check="0" data-id="5" class="dq-yes">yes</p>
+        <p data-check="0" data-id="6" class="dq-no">no</p>
+        <p data-check="0" data-id="7" class="dq-yes">yes</p>
+        <p data-check="0" data-id="8" class="dq-no">no</p>
+        <p data-check="0" data-id="9" class="dq-yes dq-last">yes</p>
+        <p data-check="0" data-id="10" class="dq-no dq-last">no</p>
+
+        <button type="button" name="button" id="dq-btn" class="dq-btn">Done</button>
+      </div>
+    </div>
+    <div class="dq-bars">
+      <p>Your rating along the Continuum of Reactions Toward Diversity is:</p>
+      <p id="dq-rating">&nbsp;</p>
+      <div class="dq-triangle" id="dq-triangle"></div>
+      <div class="dq-bars-blocks dq-bars-1">1-Recognize</div>
+      <div class="dq-bars-blocks dq-bars-2">2-Tolerate</div>
+      <div class="dq-bars-blocks dq-bars-3">3-Accept</div>
+      <div class="dq-bars-blocks dq-bars-4">4-Respect</div>
+      <div class="dq-bars-blocks dq-bars-5">5-Celebrate</div>
+      <hr id="hr-bold" />
+    </div>
+  </div>
+
+
+
+
+  <!-------------------------------------------->
+  <!--              Stylesheet                -->
+  <!-------------------------------------------->
+
+  <style>
+    html,
+    div,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .dq-main {
+      width: 520px;
+      height: 400px;
+    }
+
+    .dq-content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dq-left {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .dq-left> p {
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .dq-yes-no {
+      width: 110px;
+      margin-top: 70px
+    }
+
+    .dq-btn {
+      width: 100%;
+      margin-top: 10px;
+      height: 25px;
+      border-radius: 3px;
+      background: #848484;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dq-btn:focus {
+      outline: none;
+    }
+
+    .dq-bars {}
+
+    .dq-bars> p {
+      font-weight: bold;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .dq-yes,
+    .dq-no {
+      margin: 2px 5px;
+      text-align: right;
+      font-weight: bold;
+      display: inline-block;
+      padding: 3px;
+      cursor: pointer;
+      border: 1px solid white;
+    }
+
+    .dq-yes:hover, .dq-no:hover {
+      background-color: #bcd4eb;
+    }
+
+    .dq-last {
+      margin: 15px 5px 4.5px 5px;
+    }
+
+    #dq-rating {
+      font-size: 2em;
+      transition: all 1s;
+      transition-delay: 1s;
+      color: transparent;
+    }
+
+    .dq-bars-blocks {
+      display: inline-block;
+      width: 100px;
+      height: 20px;
+      text-align: center;
+      position: relative;
+      margin-left: -2px;
+    }
+
+    .dq-bars-1 {
+      background-color: #bcd4eb;
+      margin-left: 7px;
+    }
+
+    .dq-bars-2 {
+      background-color: #a9bed3;
+    }
+
+    .dq-bars-3 {
+      background-color: #96a9bc;
+    }
+
+    .dq-bars-4 {
+      background-color: #8394a4;
+    }
+
+    .dq-bars-5 {
+      background-color: #707f8d;
+    }
+
+    #hr-bold {
+      border: 2px solid black;
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+    .dq-triangle {
+      background-image: url('../Media/Images/triangle.png');
+      background-size: contain;
+      width: 10px;
+      height: 10px;
+      left: 0;
+
+      position: relative;
+      transition: all 1s;
+    }
+  </style>
+
+  <!-------------------------------------------->
+  <!--           Close Stylesheet             -->
+  <!-------------------------------------------->
+
+  <!-------------------------------------------->
+  <!--             JavaScript                 -->
+  <!-------------------------------------------->
+
+  <script>
+    var dq_main = {
+      dq_counter: 0,
+      jr_yes_no: function(evt) {
+        var box = evt.target.parentNode
+        if (evt.target.innerHTML === 'yes' || evt.target.innerHTML === 'no') {
+          evt.target.style.border = '1px solid black'
+          evt.target.style.borderRadius = '15px'
+          evt.target.setAttribute('data-check', '1')
+          switch (evt.target.getAttribute('data-id')) {
+            case "1":
+              removeCircles(1)
+              break
+            case "2":
+              removeCircles(0)
+              break
+            case "3":
+              removeCircles(3)
+              break
+            case "4":
+              removeCircles(2)
+              break
+            case "5":
+              removeCircles(5)
+              break
+            case '6':
+              removeCircles(4)
+              break
+            case '7':
+              removeCircles(7)
+              break
+            case '8':
+              removeCircles(6)
+              break
+            case '9':
+              removeCircles(9)
+              break
+            case '10':
+              removeCircles(8)
+              break
+          }
+          setCounter();
+        }
+
+        function setCounter() {
+          dq_main.dq_counter = 0
+          for (var i = 0; i < box.children.length; i += 2) {
+            if (box.children[i].getAttribute('data-check') === "1") {
+              dq_main.dq_counter++
+            }
+          }
+        }
+
+        function removeCircles(i) {
+          if (box.children[i].getAttribute('data-check') === "1") {
+            box.children[i].setAttribute('data-check', "0")
+            box.children[i].style.border = "none"
+            box.children[i].style.borderRadius = "none"
+          }
+        }
+      },
+      rate: function() {
+        var rating = document.getElementById('dq-rating');
+        var tri = document.getElementById('dq-triangle');
+        slider(dq_main.dq_counter)
+
+        function slider(num) {
+            switch (num) {
+              case 1:
+              tri.style.left = "57px"
+              rating.innerHTML = "Recognize"
+              rating.style.color = 'black'
+              break
+              case 2:
+              tri.style.left = "157px"
+              rating.innerHTML = "Tolerate"
+              rating.style.color = 'black'
+              break
+              case 3:
+              tri.style.left = "257px"
+              rating.innerHTML = "Accept"
+              rating.style.color = 'black'
+              break
+              case 4:
+              tri.style.left = "357px"
+              rating.innerHTML = "Respect"
+              rating.style.color = 'black'
+              break
+              case 5:
+              tri.style.left = "457px"
+              rating.innerHTML = "Celebrate"
+              rating.style.color = 'black'
+              break
+            }
+        }
+      }
+    }
+    document.getElementById("dq-yes-no").addEventListener('click', dq_main.jr_yes_no)
+    document.getElementById('dq-btn').addEventListener('click', dq_main.rate)
+  </script>
+
+  <!-------------------------------------------->
+  <!--          Close JavaScript              -->
+  <!-------------------------------------------->
+
+</body>
+
+</html>
