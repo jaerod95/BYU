@@ -300,19 +300,13 @@ a:hover {
 
 .jr_week_view_main {
   width: 500px;
-  height: 400px;
-  background-color: grey;
-  margin: 0 auto;
-}
-.jr_week_box {
-  background-color: white;
-  width: 80%;
-  margin: 0 auto;
   height: auto;
+  background-color: white;
+  margin: 0 auto;
 }
-.jr_week_box>ul {
+.jr_week_view_main>ul {
   list-style: none;
 }
-.jr_week_box>ul>li {
+.jr_week_view_main>ul>li {
   list-style: none;
 }
