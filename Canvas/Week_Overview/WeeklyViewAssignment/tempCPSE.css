@@ -298,6 +298,9 @@ a:hover {
   align: center;
 }
 
+
+/* week view styles*/
+
 .jr_week_view_main {
   width: 500px;
   height: auto;
@@ -309,4 +312,31 @@ a:hover {
 }
 .jr_week_view_main>ul>li {
   list-style: none;
+}
+
+
+
+
+/*////////////////////////////*/
+
+.jr_module_dates {
+  width: 100%;
+  height: auto;
+  border: 4px solid grey;
+  border-collapse: collapse;
+}
+
+.jr_module_title {
+  width: 500px;
+  border: 1px solid grey;
+}
+
+.jr_module_start {
+  width: 100px;
+    border: 1px solid grey;
+}
+
+.jr_module_end {
+  width: 100px;
+    border: 1px solid grey;
 }

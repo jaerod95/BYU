@@ -4,18 +4,22 @@ if (homeCheck.indexOf('/') === -1 || homeCheck.indexOf('home') > -1) {
   if (homeCheck.indexOf('home') > -1) {
     homeCheck = homeCheck.split('/')[0]
   }
+  $('#right-side-wrapper').append('<div class="jr_do_readings"><p>Don\'t forget to do your readings before doing your assignments!</p></div>')
+
+
+  /*
   //Gets the current week period to know what assignments to display
   Date.prototype.getWeek = function(start) {
     // the starting point
     start = start || 0
 
     var today = new Date(this.setHours(0, 0, 0, 0))
-console.log(today)
+    console.log(today)
 
     var today_ref = today
 
     var day = today.getDay() - start
-console.log(day)
+    console.log(day)
     var date = today.getDate() - day
     console.log(date)
       //  Start/End Dates
@@ -36,7 +40,7 @@ console.log(day)
   function makeRequest(content) {
     var oAuth = '7407~HDUjHVKpaOh9LAIrRr2ZLHmFwe7GFVw8lMujKnyjMToWUeLfQAvdQZ95vZCZsqSn';
 
-    /*change the URL to look for the browser URL to pull info*/
+    //change the URL to look for the browser URL to pull info
 
     var URL = 'https://byu.instructure.com/api/v1/courses/'
     var TYPE = "GET"
@@ -96,7 +100,7 @@ console.log(day)
           });
         }
 
-        //manipulateData(response);*/
+        //manipulateData(response);
       },
       error: function(response) {
         console.log("Error! Check the console and try again..");
@@ -115,17 +119,7 @@ console.log(day)
         $('.jr_week_view_main').append('<div class="jr_week_box" style="width: 100%; height: 30px; display: flex; border: 1px solid rgb(214,214,214); padding: 12px 6px; border-collapse: collapse; background-color: #FAFAFA;"><div class="jr_icon" style="width: 1.875rem; display: inline-block; margin-left: 1.865rem;"><span class="type_icon"><span class="ig-type-icon" style="background-color: #008A14;"><i class="icon-' + obj[q].type.toLowerCase() + '"></i></span></span></div><div class="jr_content" style="display: block; margin-left: 1.875rem;"><div class="jr_title"><a href="' + obj[q].html_url + '" class="jr_week_a" style="color: black;">' + obj[q].title + '</a></div><div class="jr_due_date"></div></div></div>')
       }
     }
-
-    /*  $('.jr_week_view_main').append('<ul class="ig-list items context_module_items manageable ui-sortable">')
-      $('.jr_week_view_main').append('<li class="context_module_item indent_0 _requirement">')
-      $('.jr_week_view_main').append('<div class="ig_row"><a href="' + obj[0].html_url + '">' + obj[0].title + '</a></div></li>')
-      for (var q = 1; q < obj.length; q++) {
-        var str = obj[q].title
-        $('.jr_week_view_main').append('<li class="context_module_item indent_1 _requirement"><a href="' + obj[q].html_url + '">' + str + '</a></li>')
-      }
-      $('.jr_week_view_main').append('</ul>')*/
-
-  }
+  }*/
 } else {
   console.log('this aint the home page')
 }
