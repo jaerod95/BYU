@@ -79,3 +79,7 @@ var jr_date_checker = {
 }
 
 jr_date_checker.checkDateValidity('2014-9-4', '2016-12-4', '2015-10-4')
+
+for (var i = 0; i < mod.length; i++) {
+  jr_date_checker.checkDateValidity()
+}
