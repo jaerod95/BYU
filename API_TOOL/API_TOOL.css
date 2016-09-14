@@ -1,0 +1,66 @@
+/***************/
+/* Main styles */
+/***************/
+#API_TOOL {
+    background-color: #ccc;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-family: Arial;
+    padding: 30px;
+    width: 60%;
+}
+#API_TOOL .button-centered {
+    background-color: #b9b9b9;
+    margin-top: 20px;
+    width: 60%;
+}
+#API_TOOL .button-centered:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+#API_TOOL input[type="text"], .button-centered {
+    border: 1px solid #000;
+    display: block;
+    font-weight: Bold;
+    height: 40px;
+    margin: auto;
+}
+#API_TOOL input[type="text"] {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 100%;
+}
+#API_TOOL h1 {
+    border-bottom: 1px solid #000;
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 5px;
+}
+#API_TOOL h2 {
+    font-size: 15px;
+    margin: 0 0 5px 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 5px;
+    padding: 0;
+}
+#API_TOOL .response {
+    background-color: #fff;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 1% 10px 1%;
+    width: 90%;
+}
+
+/**********************/
+/* JSON output colors */
+/**********************/
+
+#API_TOOL .string { color: green; }
+#API_TOOL .number { color: darkorange; }
+#API_TOOL .boolean { color: blue; }
+#API_TOOL .null { color: magenta; }
+#API_TOOL .key { color: black; }

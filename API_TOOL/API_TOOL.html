@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
+        <script src="API_TOOL.js"></script>
+        <link rel="stylesheet" href="API_TOOL.css">
+    </head>
+    <body>
+        <div id="API_TOOL">
+
+            <h1> Make the API Request:</h1>
+
+            <div class="form">
+                <h2>URL:</h2>
+                <input type="text" id="url" value="https://byu.instructure.com/api/v1/courses/167/quizzes"/>
+
+                <h2>Request Type:</h2>
+                <input type="text" id="reqType" value="GET"/>
+
+                <h2>Properties:</h2>
+                <input type="text" id="prop" />
+
+                <input type="button" class="button-centered" id="api" value="Submit" />
+            </div>
+
+            <div class="response">
+                <pre id="response"></pre>
+            </div>
+
+        </div>
+    </body>
+</html>
