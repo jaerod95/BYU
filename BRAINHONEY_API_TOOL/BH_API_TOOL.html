@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
+  <script src="BH_API_TOOL.js"></script>
+  <link rel="stylesheet" href="BH_API_TOOL.css">
+</head>
+
+<body>
+  <div id="API_TOOL">
+
+    <h1> Make the API Request:</h1>
+
+    <div class="form">
+      <h2>URL:</h2>
+      <input type="text" id="url" value="https://gls.agilix.com/cmd" />
+
+      <h2>Request Type:</h2>
+      <input type="text" id="reqType" value="GET" />
+
+      <h2>Data:</h2>
+      <input type="text" id="data" value="cmd"/>
+
+      <h2 style="opacity: 0;">Properties:</h2>
+      <input type="text" id="prop" style="opacity: 0;"/>
+
+      <input type="button" class="button-centered" id="api" value="Submit" />
+    </div>
+
+    <div class="response">
+      <pre id="response"></pre>
+    </div>
+
+  </div>
+  <!--
+  <div id="BH_converter">
+
+    <h1>BrainHoney-Canvas Course Converter</h1>
+
+    <div class="form">
+      <h2>BrainHoney Username:</h2>
+      <input type="text" id="BH_username" value="byumastercourses/">
+
+      <h2>BrainHoney Password:</h2>
+      <input type="password" id="BH_password" value="">
+      <br/>
+      <input type="checkbox" id="BH_show_password" value "">Show Password
+
+      <input type="button" class="button-centered" id="BH_submit" value="Submit" />
+
+    </div>
+  </div>
+-->
+
+  <style media="screen">
+    #BH_converter {
+      width: 800px;
+      height: 500px;
+      background-color: #ccc;
+      border: 1px solid black;
+      border-radius: 5px;
+      margin: 25px;
+      transition: all .7s;
+    }
+
+    #BH_converter h1 {
+      border-bottom: 1px solid #000;
+      font-size: 25px;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-bottom: 5px;
+      text-align: center;
+    }
+
+    #BH_converter h2 {
+      font-size: 15px;
+      margin: 0 0 5px 0;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-bottom: 5px;
+      padding: 0;
+    }
+
+    #BH_converter input[type="text"],
+    #BH_converter input[type="password"] {
+      background-color: #fff;
+      margin-bottom: 20px;
+      margin-left: 20px;
+      padding: 5px;
+      width: 80%;
+      height: 30px;
+      font-weight: bold;
+    }
+
+    #BH_converter input[type="checkbox"] {
+      margin: 0 0 20px 20px;
+    }
+
+    #BH_converter .button-centered {
+      background-color: #b9b9b9;
+      margin-top: 20px;
+      width: 60%;
+    }
+
+    #BH_converter .button-centered:hover {
+      background-color: #ccc;
+      cursor: pointer;
+    }
+  </style>
+  <script type="text/javascript">
+    $('#BH_show_password').click(function() {
+      if ($('#BH_password')[0].checked) {
+        $('#BH_password')[0].type = 'password'
+        $('#BH_password')[0].checked = false
+      } else {
+        $('#BH_password')[0].type = 'text'
+        $('#BH_password')[0].checked = true
+      }
+    });
+  </script>
+</body>
+
+</html>
