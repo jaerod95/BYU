@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html class="jr-c-html">
 
-<!--          Name:       CPSE-300 - Continuum                                   -->
+<!--          Name:       CPSE-300 - Diversity Quiz                              -->
 <!--          Author:     Jason Rodriguez                                        -->
 <!--          Course:     CPSE - 300                                             -->
 <!--          Page:       Personal Reactions and Contributions                   -->
-<!--    Recreation of the .swf interactive formerly named l1p8continuum.swf      -->
+<!--    Recreation of the .swf interactive formerly named Diversity-Quiz.swf     -->
 
 <head>
   <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <title>Continuum</title>
-  <link rel="stylesheet" href="../CSS/jr-continuum.css" media="screen" title="no title" charset="utf-8">
-  <script src="../Javascript/jr-continuum.js" charset="utf-8"></script>
 </head>
 
 <body class="jr-c-body">
@@ -74,6 +73,7 @@
     .jr-c-hr {
       width: 100%;
     }
+
     .jr-c-txt {
       width: 500px;
     }
@@ -88,48 +88,51 @@
   <!-------------------------------------------->
 
   <script>
-    window.addEventListener('DOMContentLoaded', jr_init);
+    var _jr_continuum = {
 
-    var jr_words = [
-      "An individual notices that he/she differs from others along at least one dimension. For example, a 3-year old child recognizes that he is a 'boy' and that his cousin is a girl.",
-      "Either reluctantly or willingly an individual allows diversity to exist within his/her affiliations.  For example, a group of \"popular kid\" in high school lets one of the \"computer nerds\" sit at their table at lunch",
-      "An individual approves the diversity within his/her affiliations.  For example, members of a championship bowling team welcome a new team member who admits he/she is \"not a good bowler.\"",
-      "An invidual values the diversity within his/her affiliations.  For example, a high school choir teacher selects holiday songs representing the various religious affiliations of the choir members and the school community.",
-      "An individual lauds the diversity within his/her affiliations.  For example, a CEO of a major corporation frequently spends Saturday afternoons with his unemployed neighbor shopping at the local thrift store."
-    ]
+      words: [
+        "An individual notices that he/she differs from others along at least one dimension. For example, a 3-year old child recognizes that he is a 'boy' and that his cousin is a girl.",
+        "Either reluctantly or willingly an individual allows diversity to exist within his/her affiliations.  For example, a group of \"popular kid\" in high school lets one of the \"computer nerds\" sit at their table at lunch",
+        "An individual approves the diversity within his/her affiliations.  For example, members of a championship bowling team welcome a new team member who admits he/she is \"not a good bowler.\"",
+        "An invidual values the diversity within his/her affiliations.  For example, a high school choir teacher selects holiday songs representing the various religious affiliations of the choir members and the school community.",
+        "An individual lauds the diversity within his/her affiliations.  For example, a CEO of a major corporation frequently spends Saturday afternoons with his unemployed neighbor shopping at the local thrift store."
+      ],
 
-    function jr_init() {
-      var divs = document.getElementsByClassName('jr-c-diversity');
-      for (var i = 0; i < divs.length; i++) {
-        divs[i].addEventListener('mouseover', jr_showText);
-        divs[i].addEventListener('mouseleave', jr_hideText);
+      init: function() {
+        var divs = document.getElementsByClassName('jr-c-diversity')
+        for (var i = 0; i < divs.length; i++) {
+          divs[i].addEventListener('mouseover', this.showText)
+          divs[i].addEventListener('mouseleave', this.hideText)
+        }
+      },
+
+      showText(evt) {
+        var text = document.getElementById('jr-c-txt')
+        var that = _jr_continuum
+        switch (evt.target.innerHTML) {
+          case "Recognize Diversity":
+            text.innerHTML = that.words[0]
+            break
+          case "Tolerate Diversity":
+            text.innerHTML = that.words[1]
+            break
+          case "Accept Diversity":
+            text.innerHTML = that.words[2]
+            break
+          case "Respect Diversity":
+            text.innerHTML = that.words[3]
+            break
+          case "Celebrate Diversity":
+            text.innerHTML = that.words[4]
+            break
+        }
+      },
+
+      hideText(evt) {
+        document.getElementById('jr-c-txt').innerHTML = ""
       }
     }
-
-    function jr_showText(evt) {
-      var text = document.getElementById('jr-c-txt');
-      switch (evt.target.innerHTML) {
-        case "Recognize Diversity":
-          text.innerHTML = jr_words[0]
-          break;
-        case "Tolerate Diversity":
-          text.innerHTML = jr_words[1]
-          break;
-        case "Accept Diversity":
-          text.innerHTML = jr_words[2]
-          break;
-        case "Respect Diversity":
-          text.innerHTML = jr_words[3]
-          break;
-        case "Celebrate Diversity":
-          text.innerHTML = jr_words[4]
-          break;
-      }
-    }
-
-    function jr_hideText(evt) {
-      document.getElementById('jr-c-txt').innerHTML = "";
-    }
+    window.addEventListener('DOMContentLoaded', _jr_continuum.init())
   </script>
 
   <!-------------------------------------------->
