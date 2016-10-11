@@ -1,0 +1,372 @@
+<!--    STILL LEFT TO DO 
+Put this into canvas and make it detect the modules page
+Make an option just to upload a page and not put it to a module
+Test cases for when it fails
+Making more if cases of different formats
+Remove the title from the content section of the pages
+
+
+
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+<!-- 7407~H0b3RHGsKKZr6TMdG3FabHxgnEJ0MSY9Eg7KP4rvTWm3li9BwVamEl9yvrLELwU2-->
+<!-- Jorins API CODE -->
+<!-- 7407~HDUjHVKpaOh9LAIrRr2ZLHmFwe7GFVw8lMujKnyjMToWUeLfQAvdQZ95vZCZsqSn -->
+
+<head>
+    <script type="text/javascript" src="filereader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="filereader.css" type="text/css" />
+</head>
+
+<body id="application">
+    <div id="jr_c_uploader">
+        <h1>Content Page Creator</h1>
+        <h2>Select Content Files:</h2>
+        <input type="file" id="files" name="files[]" multiple />
+        <label for="files" id="jr_c_file">Choose a file</label>
+        <p id="jr_c_list"></p>
+        <button id="jr_c_yes" onclick="FileScraper.uploadToCanvas">Proceed</button>
+        <button id="jr_c_no" onclick="FileScraper.reset">Cancel</button>
+        <div id="jr_c_loader"></div>
+    </div>
+
+
+    <!-------------------------------------------->
+    <!--             JavaScript                 -->
+    <!-------------------------------------------->
+
+    <script>
+        /* global jQuery, $ */
+        ///////////////////////////////////////////
+        ///////TOGGLE FUNCTION FOR BH TOOL/////////
+        ///////////////////////////////////////////
+        
+        function jr_fr_toggle() {
+            if ($('#jr_c_uploader').css('opacity') == 0) {
+                $('#jr_c_uploader').css('opacity', 1)
+            }
+            else {
+                $('#jr_c_uploader').css('opacity', 0)
+            }
+        }
+        
+        ////////////////////////////////////////////
+        /////MAIN FUNCTION FOR CONVERSION
+        ////////////////////////////////////////////
+        
+        var FileScraper = {
+            
+            //RESETS FILESCRAPER TO DEFAULT VALUES//
+            reset: function() {
+                this.f = null
+                this.loc = 0
+                this.files = null
+                this.output = ""
+                this.pages = []
+                this.id = 0
+                this.pageIndex = 0
+                this.err = false
+            },
+
+            ////////////////////////////////////
+            //////DECLARATION OF VARIABLES//////
+            ////////////////////////////////////
+
+            //f will be defined at runtime as the single file being worked on
+            f: null,
+
+            //iterator to tell where in all the files we currently are
+            loc: 0,
+
+            //files will be defined at run time as the array of files
+            files: null,
+
+            //This will be where the file data will be stored
+            output: "",
+
+            //Authorization for Canvas
+            oAuth: '7407~H0b3RHGsKKZr6TMdG3FabHxgnEJ0MSY9Eg7KP4rvTWm3li9BwVamEl9yvrLELwU2',
+
+            pages: [],
+
+            id: 0,
+
+            pageIndex: 0,
+            
+            err: false,
+
+            ////////////////////////////////////
+            ////END DECLARATION OF VARIABLES////
+            ////////////////////////////////////
+
+
+
+
+            ////////////////////////////////////
+            ////////START INIT FUNCTIONS////////
+            ////////////////////////////////////
+
+            init: function() {
+                $('#application').append('<button id="jr_toggle_c_uploader" onclick="jr_fr_toggle()"><p>Toggle Content Page Uploader</p></button>')
+            },
+
+
+
+            //Gathers all the file information at places it in the files variable
+
+            init_scraper: function(evt) {
+                var that = FileScraper
+                that.files = evt.target.files
+                that.handleFileSelect()
+            },
+
+            ///////////////////////////////////////////////
+            //Gets title and places it in the array pages//
+            ///////////////////////////////////////////////
+
+            getTitleAndContent: function(str) {
+                try {
+                    var splits = str.split('<!-- InstanceBeginEditable name="MainContent" -->')[1]
+                    var content = splits.split('<!-- InstanceEndEditable -->')[0]
+                    var title = content.split('>')[1]
+                    title = title.split('<')[0]
+                        //title is title[0]
+                    var word = title.split('>')
+                        //content is word[1]
+                    var tempArray = new Array(this.f.name)
+                    tempArray.push(new Array(title, content))
+                    console.log(tempArray)
+                    this.pages.push(tempArray)
+                    console.log(this.pages)
+                }
+                catch (e) {
+                    this.err = true;
+                    console.log("Error: found an error with the file \"" + this.f.name)
+                    $('#jr_c_list').append("Error: found an error with the file \"" + this.f.name + "\n")
+                    if (this.loc + 1 < this.files.length) {
+                        this.loc++
+                            this.handleFileSelect()
+                    }
+                    else {
+                        this.uploadToCanvas()
+                    }
+                }
+
+                if (this.loc + 1 < this.files.length) {
+                    this.loc++
+                        this.handleFileSelect()
+                }
+                else {
+                    this.confirmIt()
+                }
+            },
+
+            confirmIt: function() {
+                if (this.err) {
+                alert("There were errors found in your selection, please review before proceeding")
+                $('#jr_c_yes').css('opacity', 1)
+                $('#jr_c_no').css('opacity', 1)
+                }
+                else {
+                    this.uploadToCanvas()
+                }
+            },
+
+            handleFileSelect: function() {
+                var that = FileScraper
+                    // files is a FileList of File objects. List some properties.
+
+                that.f = that.files[that.loc]
+
+                that.output += '<li><strong>' + that.f.name + '</strong> (' + (that.f.type || 'n/a') + ') - ' + that.f.size + ' bytes, last modified: ' + (that.f.lastModifiedDate.toLocaleDateString() || 'n/a') + '</li>'
+
+                var reader = new FileReader();
+
+                // Loads the HTML Page content into a reader
+                reader.readAsText(that.f);
+                reader.onload = function() {
+                    var str = reader.result
+                    that.getTitleAndContent(str)
+                }
+            },
+
+            uploadToCanvas: function() {
+                $('#jr_c_loader').css('opacity', 1)
+                $('#jr_c_list').append(FileScraper.output)
+                init()
+
+                function init() {
+                    var that = FileScraper
+
+                    var beginningNumbers = /\d+/;
+                    var currentModule = that.pages[0][0].split('_')[0]
+                    currentModule = currentModule.replace(/\D+/, '')
+                    createModule('Introduction')
+                    var id_cachedValue = that.id;
+
+                    function doStuff() {
+                        console.log('do stuff ran')
+                        if (that.id === id_cachedValue) { //we want it to match
+                            setTimeout(doStuff, 50); //wait 50 millisecnds then recheck
+                            return;
+                        }
+                        console.log('it passed!')
+                        id_cachedValue = that.id;
+                        if (that.pageIndex < that.pages.length) {
+                            var temp = that.pages[that.pageIndex][0].split('_')[0]
+                            temp = temp.replace(/\D+/g, '')
+                            if (temp === currentModule) {
+                                that.pages[that.pageIndex][1].push(currentModule)
+                                createPage(that.pages[that.pageIndex], that.id)
+                            }
+                            else {
+                                detectModules2()
+                            }
+                        } else {
+                        $('#jr_c_loader').css('opacity', 1)
+                        }
+                    }
+                    doStuff();
+                }
+
+                function detectModules() {
+                    var that = FileScraper
+
+                    var currentModule = that.pages[that.pageIndex - 1][0].split('_')[0]
+                    currentModule = currentModule.replace(/\D+/, '')
+
+                    if (that.pageIndex < that.pages.length) {
+                        var temp = that.pages[that.pageIndex][0].split('_')[0]
+                        temp = temp.replace(/\D+/g, '')
+                        if (temp === currentModule) {
+                            that.pages[that.pageIndex][1].push(currentModule)
+                            createPage(that.pages[that.pageIndex], that.id)
+                        }
+                        else {
+                            detectModules2()
+                        }
+                    }
+                    else {
+                        $('#jr_c_loader').css('opacity', 0)
+                    }
+                }
+
+                function detectModules2() {
+                    var that = FileScraper
+
+                    var beginningNumbers = /\d+/;
+                    var currentModule = that.pages[that.pageIndex][0].split('_')[0]
+                    currentModule = currentModule.replace(/\D+/, '')
+                    createModule('Module ' + currentModule)
+                    var id_cachedValue = that.id;
+
+                    function doStuff() {
+                        console.log('do stuff ran')
+                        if (that.id === id_cachedValue) { //we want it to match
+                            setTimeout(doStuff, 50); //wait 50 millisecnds then recheck
+                            return;
+                        }
+                        console.log('it passed!')
+                        that.pages[that.pageIndex][1].push(currentModule)
+                        createPage(that.pages[that.pageIndex], that.id)
+                    }
+                    doStuff();
+                }
+
+
+
+                ///////////////////////////////////////////////
+                ////////////BEGIN CREATE FUNCITONS/////////////
+                ///////////////////////////////////////////////
+                
+                
+                function createModule(name) {
+                    jQuery.ajax({
+                        url: "https://byu.instructure.com/api/v1/courses/315/modules?access_token=" + FileScraper.oAuth,
+                        type: "POST",
+                        data: {
+                            module: {
+                                "name": name
+                            }
+                        },
+                        success: function(response) {
+                            console.log(response)
+                            FileScraper.id = response.id
+                        },
+                        error: function(response) {
+                            alert("Error! Check the console and try again..");
+                            console.log(response);
+                        }
+                    });
+                }
+
+                function createPage(myarray, id) {
+                    FileScraper.pageIndex++
+                        jQuery.ajax({
+                            url: "https://byu.instructure.com/api/v1/courses/315/pages?access_token=" + FileScraper.oAuth,
+                            type: "POST",
+                            data: {
+                                wiki_page: {
+                                    "title": myarray[1][0],
+                                    "body": myarray[1][1]
+                                }
+                            },
+                            success: function(response) {
+                                console.log(response)
+                                attachPage(response.url, id)
+                            },
+                            error: function(response) {
+                                alert("Error! Check the console and try again..");
+                                console.log(response);
+                            }
+                        });
+                }
+
+                function attachPage(url, id) {
+                    console.log(id)
+                    jQuery.ajax({
+                        url: "https://byu.instructure.com/api/v1/courses/315/modules/" + id + "/items?access_token=" + FileScraper.oAuth,
+                        type: "POST",
+                        data: {
+                            module_item: {
+                                "type": "Page",
+                                "page_url": url
+                            }
+                        },
+                        success: function(response) {
+                            console.log(response)
+                            detectModules()
+
+                        },
+                        error: function(response) {
+                            alert("Error! Check the console and try again..");
+                            console.log(response);
+                        }
+                    });
+                }
+                
+                ///////////////////////////////////////////////
+                ////////////END CREATE FUNCITONS///////////////
+                ///////////////////////////////////////////////
+
+
+                // url and request type defined by the text fields
+            }
+        }
+
+        document.getElementById('files').addEventListener('change', FileScraper.init_scraper, false);
+        FileScraper.init()
+    </script>
+
+    <!-------------------------------------------->
+    <!--          Close JavaScript              -->
+    <!-------------------------------------------->
+
+</body>
+
+</html>
