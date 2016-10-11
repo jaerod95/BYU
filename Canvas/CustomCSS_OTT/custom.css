@@ -1,0 +1,62 @@
+/* Get rid of white space above Course Home Header. */
+#isbyu-course-home-header-content > *:first-child {
+  margin-top: 0;
+}
+
+/* Default closed completed modules on home page, maybe? */
+.home #content #context_modules .context_module.completed > .content,
+.home #content #context_modules .context_module.completed .collapse_module_link {
+  display: none;
+}
+
+.home #content #context_modules .context_module.completed .expand_module_link {
+  display: inline-block;
+}
+
+/* Table captions for image, etc. captions. */
+.user_content table tr:only-of-type > td:only-child {
+  padding: 0;
+}
+.user_content table tr:only-of-type > td:only-child > img:only-child {
+  width: 100%;
+}
+
+.user_content table > caption {
+  caption-side: bottom;
+  font-size: smaller;
+  text-align: left;
+}
+
+/*
+*****************************************************************************************
+*****************************************************************************************
+******************************BEGIN GENERAL COURSE CSS***********************************
+************To use add a div with the class 'byu_main' around all the content************
+*****************************************************************************************
+*****************************************************************************************
+*/
+
+.show-content.user_content.clearfix.enhanced {
+    max-width: 800px;
+    height: auto;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.show-content.user_content.clearfix.enhanced h1, .show-content.user_content.clearfix.enhanced h2, .show-content.user_content.clearfix.enhanced h3, .show-content.user_content.clearfix.enhanced h4, .show-content.user_content.clearfix.enhanced h5, .show-content.user_content.clearfix.enhanced h6 {
+    font-family: sans-serif;
+    border-bottom: 1px solid #ccc;
+}
+
+.show-content.user_content.clearfix.enhanced p {
+    font-family: sans-serif;
+    text-align: justify;
+}
+
+.show-content.user_content.clearfix.enhanced img {
+    padding: 10px;
+}
+
+.show-content.user_content.clearfix.enhanced iframe {
+    padding: 10px;
+}
