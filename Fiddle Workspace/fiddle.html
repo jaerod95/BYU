@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+
+    <script>
+        class box {
+            constructor(x, y, z) {
+                this.width = x
+                this.height = y
+                this.depth = z
+            }
+            getVolume() {
+                var volume = (this.width * this.height * this.depth)
+                console.log(volume)
+                return volume
+            }
+        }
+
+        var boxes = new box(2, 3, 4)
+
+        var volume = boxes.getVolume()
+        
+        console.log(volume)
+    </script>
+</body>
+
+</html>

@@ -83,11 +83,10 @@
 
 #jr_c_list {
     overflow-y: scroll;
-    width: 360px;
+    width: 338px;
     height: 260px;
     border: 1px solid black;
-    margin: 20px;
-    
+    margin: 10px; 
 }
 
 #jr_c_yes {
