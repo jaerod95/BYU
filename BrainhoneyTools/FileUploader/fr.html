@@ -31,7 +31,7 @@ Making more if cases of different formats
         <p>Errors found with the following files:
             <ul id="jr_c_list"></ul>
         </p>
-        <button id="jr_c_yes" onclick="FileScraper.proceed()">Proceed</button>
+        <button id="jr_c_yes" onclick="FileScraper.uploadToCanvas()">Proceed</button>
         <button id="jr_c_no" onclick="FileScraper.resetIt()">Cancel</button>
         <div id="jr_c_loader"></div>
     </div>
@@ -81,12 +81,17 @@ Making more if cases of different formats
             //Authorization for Canvas
             oAuth: '7407~H0b3RHGsKKZr6TMdG3FabHxgnEJ0MSY9Eg7KP4rvTWm3li9BwVamEl9yvrLELwU2',
 
+            //Array where we will store all the arrays of file information
             pages: [],
 
+            //The module ID for each module to upload the files
             id: 0,
 
+            //The current File array of data getting uploaded
             pageIndex: 0,
 
+            //If an error is found in a file, this will become true,
+            //causing a confirmation window to appear
             err: false,
 
             ////////////////////////////////////
@@ -100,6 +105,7 @@ Making more if cases of different formats
             ////////START INIT FUNCTIONS////////
             ////////////////////////////////////
 
+            //Appends the toggle button for the filereader
             init: function() {
                 $('#application').append('<button id="jr_toggle_c_uploader" onclick="jr_fr_toggle()"><p>Toggle Content Page Uploader</p></button>')
             },
@@ -114,12 +120,21 @@ Making more if cases of different formats
                 that.handleFileSelect()
             },
 
+            ////////////////////////////////////
+            /////////END INIT FUNCTIONS/////////
+            ////////////////////////////////////
+
+
+            ////////////////////////////////////
+            ////////START SIDE FUNCTIONS////////
+            ////////////////////////////////////
+
             //Begins the loading animation
             loadIt: function() {
                 $('#jr_c_loader').css('opacity', 1)
             },
 
-            //RESETS FILESCRAPER TO DEFAULT VALUES//
+            //RESETS FILESCRAPER TO DEFAULT VALUES
             resetIt: function() {
                 this.f = null
                 this.loc = 0
@@ -134,24 +149,46 @@ Making more if cases of different formats
                 $('#jr_c_list').empty()
             },
 
-            proceed: function() {
-                this.uploadToCanvas()
+            ////////////////////////////////////
+            /////////END SIDE FUNCTIONS/////////
+            ////////////////////////////////////            
+
+            ///////////////////////////////////////////////
+            //////////////CONTENT FUNCTIONS////////////////
+            ///////////////////////////////////////////////
+
+            //Returns the title portion of the string file
+            getTitle: function(str) {
+                var splits = str.split('<!-- InstanceBeginEditable name="MainContent" -->')[1]
+                var content = splits.split('<!-- InstanceEndEditable -->')[0]
+                var title = content.split('>')[1]
+                title = title.split('<')[0]
+                return title
             },
 
-            ///////////////////////////////////////////////
-            //Gets title and places it in the array pages//
-            ///////////////////////////////////////////////
+            //Returns the content portion of the string file
+            getContent: function(str) {
+                var splits = str.split('<!-- InstanceBeginEditable name="MainContent" -->')[1]
+                var content = splits.split('<!-- InstanceEndEditable -->')[0]
+                content = content.replace('>', "").replace('>', '@@@!!!@@@')
+                content = content.split('@@@!!!@@@')[1]
+                return content
+            },
 
+            //Validates the title to see if it is a real value
+            //Real values are alpha-numeric combinations
+            validateTitle: function(title) {
+                title = title.replace(/&[^\s]*;/g, "")
+                return /[a-z]|[0-9]/i.test(title);
+            },
+
+            //Gets title and places it in the array pages
             getTitleAndContent: function(str) {
                 try {
-                    var splits = str.split('<!-- InstanceBeginEditable name="MainContent" -->')[1]
-                    var content = splits.split('<!-- InstanceEndEditable -->')[0]
-                    var title = content.split('>')[1]
-                    title = title.split('<')[0]
+                    var title = this.getTtile(str)
                     if (!this.validateTitle(title))
-                        throw "no!"
-                    content = content.replace('>', "").replace('>', '@@@!!!@@@')
-                    content = content.split('@@@!!!@@@')[1]
+                        throw "no!" //Throws an exception at the locationg in the files array
+                    var content = this.getContent(str)
                     var tempArray = new Array(this.f.name)
                     tempArray.push(new Array(title, content))
                     this.pages.push(tempArray)
@@ -171,18 +208,14 @@ Making more if cases of different formats
 
                 if (this.loc + 1 < this.files.length) {
                     this.loc++
-                    this.handleFileSelect()
+                        this.handleFileSelect()
                 }
                 else {
                     this.confirmIt()
                 }
             },
 
-            validateTitle: function(title) {
-                title = title.replace(/&[^\s]*;/g, "")
-                return /[a-z]|[0-9]/i.test(title);
-            },
-
+            //
             confirmIt: function() {
                 console.log(this.pages)
                 if (this.err) {
@@ -202,11 +235,8 @@ Making more if cases of different formats
                     // files is a FileList of File objects. List some properties.
 
                 that.f = that.files[that.loc]
-
-                //that.output = '<li><strong>' + that.f.name + '</strong> (' + (that.f.type || 'n/a') + ') - ' + that.f.size + ' bytes, last modified: ' + (that.f.lastModifiedDate.toLocaleDateString() || 'n/a') + '</li>'
-                //$('#jr_c_list').append(FileScraper.output)
-
-
+                    /*that.output = '<li><strong>' + that.f.name + '</strong> (' + (that.f.type || 'n/a') + ') - ' + that.f.size + ' bytes, last modified: ' + (that.f.lastModifiedDate.toLocaleDateString() || 'n/a') + '</li>'
+                    //$('#jr_c_list').append(FileScraper.output)*/
                 var reader = new FileReader();
 
                 // Loads the HTML Page content into a reader
@@ -219,15 +249,12 @@ Making more if cases of different formats
 
             uploadToCanvas: function() {
                 if (this.pages.length != 0) {
-                    console.log(this.pages)
-                    console.log("made it")
                     $('#jr_c_loader').css('opacity', 1)
                     $('#jr_c_errorMesage').css('opacity', 0)
                     init()
 
                     function init() {
                         var that = FileScraper
-
                         var beginningNumbers = /\d+/;
                         var currentModule = that.pages[0][0].split('_')[0]
                         currentModule = currentModule.replace(/\D+/, '')
@@ -260,8 +287,6 @@ Making more if cases of different formats
 
                     function detectModules() {
                         var that = FileScraper
-                        console.log(currentModule)
-
                         var currentModule = that.pages[that.pageIndex - 1][0].split('_')[0]
                         currentModule = currentModule.replace(/\D+/, '')
                         console.log(currentModule)
@@ -285,7 +310,7 @@ Making more if cases of different formats
                         var that = FileScraper
 
                         var beginningNumbers = /\d+/;
-                        var currentModule = that.pages[that.pageIndex-1][0].split('_')[0]
+                        var currentModule = that.pages[that.pageIndex - 1][0].split('_')[0]
                         currentModule = currentModule.replace(/\D+/, '')
                         createModule('Module ' + currentModule)
                         var id_cachedValue = that.id;
